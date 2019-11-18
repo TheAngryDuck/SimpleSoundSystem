@@ -7,6 +7,19 @@
     <e p="C:\Users\marti\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\marti\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_SimpleSoundSystem.-2091281108.00" t="ExcludeRecursive" />
     <e p="C:\Users\marti\RiderProjects\SimpleSoundSystem" t="IncludeFlat">
+      <e p="DAL" t="IncludeRecursive">
+        <e p="AppDbContext.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DAL.csproj" t="IncludeRecursive" />
+        <e p="Dao.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.1" t="Include">
+              <e p="DAL.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="DesktopApp" t="IncludeRecursive">
         <e p="App.xaml" t="Include" />
         <e p="App.xaml.cs" t="Include" />
@@ -21,6 +34,20 @@
             </e>
           </e>
         </e>
+      </e>
+      <e p="Domain" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Domain.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.1" t="Include">
+              <e p="Domain.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Theme.cs" t="Include" />
+        <e p="Track.cs" t="Include" />
+        <e p="TrackInTheme.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="SimpleSoundSystem.sln" t="IncludeFlat" />
