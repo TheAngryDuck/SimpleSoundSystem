@@ -1,10 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApp", "DesktopApp\DesktopApp.csproj", "{A010AA58-F5A4-4975-B87F-F68E5CDFB7FD}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopApp", "DesktopApp\DesktopApp.csproj", "{A010AA58-F5A4-4975-B87F-F68E5CDFB7FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{EBD3E4FB-40E8-4407-9619-04A65AB55CD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{EBD3E4FB-40E8-4407-9619-04A65AB55CD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{D714EB08-3E4A-4E41-941F-B46E370D7AB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{D714EB08-3E4A-4E41-941F-B46E370D7AB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +27,11 @@ Global
 		{D714EB08-3E4A-4E41-941F-B46E370D7AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D714EB08-3E4A-4E41-941F-B46E370D7AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D714EB08-3E4A-4E41-941F-B46E370D7AB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46D7770C-71E6-4565-AC2D-D7A9E00CA258}
 	EndGlobalSection
 EndGlobal
