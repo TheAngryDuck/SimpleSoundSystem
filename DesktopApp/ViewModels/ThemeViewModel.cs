@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using DAL;
 using DesktopApp.Helpers;
+using DesktopApp.Views;
 using Domain;
 
 namespace DesktopApp.ViewModels
@@ -15,6 +16,7 @@ namespace DesktopApp.ViewModels
         private Dao data;
         private ICommand _addThemeCommand;
         private ICommand _deleteThemeCommand;
+        private ICommand _goSoundsCommand;
         private string _themeNameInner;
         public Theme SelectedTheme { get; set; }
         public string ThemeNameOuter
@@ -80,18 +82,58 @@ namespace DesktopApp.ViewModels
                 return _deleteThemeCommand;
             }
         }
+        public ICommand GoSoundsCommand
+        {
+            get
+            {
+                if (_goSoundsCommand == null)
+                {
+                    _goSoundsCommand = new RelayCommand(
+                        param => SoundsViewGo(),
+                        param => (_goSoundsCommand != null)
+                    );
+                }
+                return _goSoundsCommand;
+            }
+        }
         private void Button_Click()
         {
+            bool isNew = true;
             Theme tmp = new Theme {Name = _themeNameInner};
-            data.AddTheme(tmp);
+            foreach (var theme in Themes)
+            {
+                if (theme.Name.Equals(tmp.Name))
+                {
+                    isNew = false;
+                }
+            }
+            if (isNew)
+            {
+                data.AddTheme(tmp);
             Themes = data.GetAllThemes();
-
+            }
         }
 
         private void Delete_theme(Theme item)
         {
-            data.DeleteTheme(item.Id);
+            if (item !=null)
+            {
+                data.DeleteTheme(item.Id);
             Themes = data.GetAllThemes();
+            }
+            
+        }
+
+        private void SoundsViewGo()
+        {
+            if (SelectedTheme !=null)
+            {
+                 SoundsView app = new SoundsView();
+            SoundsViewModel context = new SoundsViewModel(SelectedTheme);
+            app.DataContext = context;
+            app.Show();
+            }
+           
         }
     }
 }

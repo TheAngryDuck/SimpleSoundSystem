@@ -7,7 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="800" MaxHeight="400">
     <Grid>
-
         <Label VerticalAlignment="Top" Content="Name" HorizontalAlignment="Left" Margin="24,12,0,0"/>
         <TextBox Width="178" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="87,15,0,0"
                  HorizontalContentAlignment="Center"
@@ -16,6 +15,8 @@
                  VerticalContentAlignment="Center"/>
         <Button Margin="285,12,465,358" Width="50" Height="30" Content="Add" VerticalAlignment="Top"
                 Command="{Binding Path=SaveThemeCommand}"/>
+        <Button Margin="350,58,400,0" Width="50" Height="30" Content="GO" VerticalAlignment="Top"
+                Command="{Binding Path=GoSoundsCommand}"/>
         <Button Margin="285,58,465,0" Width="50" Height="30" Content="Delete" VerticalAlignment="Top"
                 Command="{Binding Path=DeleteThemeCommand}" />
         <Label VerticalAlignment="Top" Content="Select from list to delete" HorizontalAlignment="Left" Margin="126,58,0,0"/>
@@ -23,10 +24,7 @@
                   VerticalAlignment="Top" SelectedItem="{Binding SelectedTheme}" SelectionMode="Single">
             <ListView.View>
                 <GridView x:Name="grdTest">
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="390" >
-
-                    </GridViewColumn>
-
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="390" />
                 </GridView>
             </ListView.View>
         </ListView>

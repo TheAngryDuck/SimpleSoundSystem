@@ -1,0 +1,66 @@
+﻿<Window x:Class="DesktopApp.Views.PlayerView"
+        Tag="P"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopApp.Views"
+        mc:Ignorable="d"
+        Title="{Binding SelectedTrack.Name}" Height="300" Width="300"
+        MinWidth="300" SizeToContent="WidthAndHeight">
+    <Window.CommandBindings>
+        <CommandBinding Command="MediaCommands.Play" CanExecute="Play_CanExecute" Executed="Play_Executed" />
+        <CommandBinding Command="MediaCommands.Pause" CanExecute="Pause_CanExecute" Executed="Pause_Executed" />
+        <CommandBinding Command="MediaCommands.Stop" CanExecute="Stop_CanExecute" Executed="Stop_Executed" />
+        <CommandBinding CanExecute="More_CanExecute" Executed="More_Executed">
+            <CommandBinding.Command>MediaCommands.IncreaseVolume</CommandBinding.Command>
+        </CommandBinding>
+        <CommandBinding CanExecute="Less_CanExecute" Executed="Less_Executed">
+            <CommandBinding.Command>MediaCommands.DecreaseVolume</CommandBinding.Command>
+        </CommandBinding>
+    </Window.CommandBindings>
+    <Grid MouseWheel="Grid_MouseWheel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ToolBar>
+            <Button Command="MediaCommands.Play" Content="Play"/>
+            
+            <Button Command="MediaCommands.Pause" Content="Pause"/>
+            
+            <Button Command="MediaCommands.Stop" Content="Stop"/>
+            <Separator/>
+            <Button Command="MediaCommands.DecreaseVolume" Content="-"/>
+
+            <Button Command="MediaCommands.IncreaseVolume" Content="+"/>
+
+        </ToolBar>
+
+        <MediaElement Name="mePlayer" Grid.Row="1" LoadedBehavior="Manual" Stretch="None" Source="{Binding SelectedTrack.FilePath}" />
+
+        <StatusBar Grid.Row="2">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem>
+                <TextBlock Name="lblProgressStatus">00:00:00</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
+                <Slider Name="sliProgress" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" />
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="2">
+                <ProgressBar Name="pbVolume" Width="50" Height="12" Maximum="1" Value="{Binding ElementName=mePlayer, Path=Volume}" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

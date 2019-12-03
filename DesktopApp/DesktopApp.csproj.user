@@ -5,6 +5,12 @@
     <Compile Update="Views\ApplicationView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\PlayerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SoundsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ThemeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -17,6 +23,12 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\ApplicationView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PlayerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SoundsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ThemeView.xaml">

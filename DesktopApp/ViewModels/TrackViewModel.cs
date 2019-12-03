@@ -89,22 +89,38 @@ namespace DesktopApp.ViewModels
         }
         private void Button_Click()
         {
-            var dialog = new OpenFileDialog();
+            if (TrackNameOuter != null || TrackNameOuter != "")
+            {
+                var dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == true)
             {
                 TrackPathOuter = dialog.FileName;
             }
 
+            bool isNew = true;
             var tmp = new Track {Name = _trackNameInner, FilePath = _trackPathInner};
-            data.AddTrack(tmp);
+            foreach (var track in Tracks)
+            {
+                if (track.Name.Equals(tmp.Name))
+                {
+                    isNew = false;
+                }
+            }
+            if (isNew)
+            {
+                data.AddTrack(tmp);
             Tracks = data.GetAllTracks();
-
+            }
+            }
         }
 
         private void Delete_track(Track item)
         {
-            data.DeleteTrack(item.Id);
+            if (item != null)
+            {
+                data.DeleteTrack(item.Id);
             Tracks = data.GetAllTracks();
+            }
         }
 
 

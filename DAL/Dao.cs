@@ -76,6 +76,59 @@ namespace DAL
             }
         }
 
+        public List<TrackInTheme> GetAllTrackInThemes()
+        {
+            using (var ctx = new AppDbContext())
+            {
+                List<TrackInTheme> trackInThemes = new List<TrackInTheme>();
+                foreach (var trackInTheme in ctx.TrackInThemes)
+                {
+                    foreach (var track in ctx.Tracks)
+                    {
+                        if (track.Id == trackInTheme.TrackId)
+                        {
+                            trackInTheme.Track = track;
+                        }
+                    }
+
+                    foreach (var theme in ctx.Themes)
+                    {
+                        if (theme.Id == trackInTheme.ThemeId)
+                        {
+                            trackInTheme.Theme = theme;
+                        }
+                    }
+                    trackInThemes.Add(trackInTheme);
+                }
+
+                return trackInThemes;
+            }
+
+        }
+
+        public List<Track> GetAllRelatedTracks(int targetId)
+        {
+            using (var ctx = new AppDbContext())
+            {
+                List<Track> relatedTracks = new List<Track>();
+                foreach (var trackInTheme in ctx.TrackInThemes)
+                {
+                    if (trackInTheme.ThemeId == targetId)
+                    {
+                        foreach (var track in ctx.Tracks)
+                        {
+                            if (track.Id == trackInTheme.TrackId)
+                            {
+                                relatedTracks.Add(track);
+                            }
+                        }
+                    }
+                }
+
+                return relatedTracks;
+            }
+        }
+
         public void DeleteTheme(int targetId)
         {
             using (var ctx = new AppDbContext())
@@ -98,6 +151,20 @@ namespace DAL
                 if (itemToRemove != null)
                 {
                     ctx.Tracks.Remove(itemToRemove);
+                    ctx.SaveChanges();
+                }
+            }
+        }
+
+        public void DeleteTrackInTheme(int targetId)
+        {
+            using (var ctx = new AppDbContext())
+            {
+                var itemToRemove = ctx.TrackInThemes.SingleOrDefault(x => x.Id == targetId);
+
+                if (itemToRemove != null)
+                {
+                    ctx.TrackInThemes.Remove(itemToRemove);
                     ctx.SaveChanges();
                 }
             }
