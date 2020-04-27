@@ -37,11 +37,6 @@
         <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </ApplicationDefinition>
     </ItemGroup>
-  <ItemGroup>
-    <None Update="sound.sqlite">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
     <ItemGroup>
       <None Update="sound.sqlite">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
