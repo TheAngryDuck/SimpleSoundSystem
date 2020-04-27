@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using DAL;
 using DesktopApp.Helpers;
+using DesktopApp.Models;
 using DesktopApp.Views;
-using Domain;
 
 namespace DesktopApp.ViewModels
 {
@@ -76,7 +75,7 @@ namespace DesktopApp.ViewModels
                 {
                     _deleteThemeCommand = new RelayCommand(
                         param => Delete_theme(SelectedTheme),
-                        param => (ThemeNameOuter != null)
+                        param => (SelectedTheme != null)
                     );
                 }
                 return _deleteThemeCommand;

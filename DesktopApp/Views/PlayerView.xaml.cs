@@ -23,6 +23,12 @@ namespace DesktopApp.Views
     {
         private bool mediaPlayerIsPlaying = false;
         private bool userIsDraggingSlider = false;
+        private double volume = 0.5;
+        private bool canSwell = false;
+        private bool canFade = false;
+        private double CurrentVolume = 0.5;
+        public bool CanLoop { get; set; } = false;
+        private bool willLoop = false;
 
         public PlayerView()
         {
@@ -32,6 +38,12 @@ namespace DesktopApp.Views
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+
+            DispatcherTimer volTimer = new DispatcherTimer();
+            volTimer.Interval = TimeSpan.FromMilliseconds(250);
+            volTimer.Tick += timer_Tick2;
+            volTimer.Start();
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -43,10 +55,46 @@ namespace DesktopApp.Views
                 sliProgress.Value = mePlayer.Position.TotalSeconds;
             }
         }
+        private void timer_Tick2(object sender, EventArgs e)
+        {
+            if (canSwell && (mePlayer.Volume - volume) >= -0.01)
+            {
+                canSwell = false;
+            }
+            if (canSwell)
+            {
+                mePlayer.Volume += (CurrentVolume / 12);
+            }
 
+            if (canFade && Math.Abs(mePlayer.Volume) > 0)
+            {
+                mePlayer.Volume -= (CurrentVolume / 12);
+            }
 
+            
 
+            if (canFade && Math.Abs(mePlayer.Volume) <= 0.01)
+            {
+                canFade = false;
+                mePlayer.Stop();
+                mediaPlayerIsPlaying = false;
+                mePlayer.Volume = volume;
+            }
 
+        }
+
+        private void Check(object sender, RoutedEventArgs e)
+        {
+            CanLoop = true;
+
+            loopBox.Background = new SolidColorBrush(Colors.LawnGreen);
+        }
+
+        private void Uncheck(object sender, RoutedEventArgs e)
+        {
+            CanLoop = false;
+            loopBox.Background = new SolidColorBrush(Colors.Red);
+        }
 
         private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -55,8 +103,13 @@ namespace DesktopApp.Views
 
         private void Play_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            volume = mePlayer.Volume;
+            mePlayer.Volume -= mePlayer.Volume;
+            
             mePlayer.Play();
+            canSwell = true;
             mediaPlayerIsPlaying = true;
+            willLoop = true;
         }
         private void More_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -71,6 +124,8 @@ namespace DesktopApp.Views
             if (mePlayer.Volume < 1)
             {
                 mePlayer.Volume += 0.1;
+                //volume = mePlayer.Volume;
+                CurrentVolume = mePlayer.Volume;
             }
             
         }
@@ -78,11 +133,27 @@ namespace DesktopApp.Views
         {
             if (mePlayer.Volume > 0)
             {
-               mePlayer.Volume -= 0.1; 
+               mePlayer.Volume -= 0.1;
+               //volume = mePlayer.Volume;
+                CurrentVolume = mePlayer.Volume;
+
+            }
+
+        }
+
+        private void Media_Ended(object sender, EventArgs e)
+        {
+            if (CanLoop && willLoop)
+            {
+                mePlayer.Position = TimeSpan.FromMilliseconds(1);
+                mePlayer.Play();
+            }
+            else
+            {
+                mePlayer.Stop();
             }
             
         }
-
         private void Pause_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = mediaPlayerIsPlaying;
@@ -100,12 +171,9 @@ namespace DesktopApp.Views
 
         private void Stop_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            while (mePlayer.Volume > 0.01)
-            {
-                mePlayer.Volume -= (mePlayer.Volume / 10000);
-            }   
-            mePlayer.Stop();
-            mediaPlayerIsPlaying = false;
+            canFade = true;
+            willLoop = false;
+
         }
 
 

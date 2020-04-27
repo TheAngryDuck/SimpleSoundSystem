@@ -7,9 +7,9 @@
         xmlns:local="clr-namespace:DesktopApp.Views"
         xmlns:viewModels="clr-namespace:DesktopApp.ViewModels"
         mc:Ignorable="d"
-        Title="Simple Sound System" Height="600" Width="1000">
+        Title="Simple Sound System" Height="350" Width="600"  Background="LightGreen">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewModels:ThemeViewModel}">
+        <DataTemplate DataType="{x:Type viewModels:ThemeViewModel}" >
             <local:ThemeView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModels:TrackViewModel}">
@@ -28,7 +28,7 @@
                         <Button Content="{Binding Name}"
                                 Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                                 CommandParameter="{Binding }"
-                                Margin="2,5"/>
+                                Margin="2,5" Background="GreenYellow"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

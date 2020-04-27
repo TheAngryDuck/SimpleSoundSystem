@@ -12,6 +12,11 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="DAL.csproj" t="IncludeRecursive" />
         <e p="Dao.cs" t="Include" />
+        <e p="Migrations" t="Include">
+          <e p="20191127134036_InitialDbCreation.cs" t="Include" />
+          <e p="20191127134036_InitialDbCreation.Designer.cs" t="Include" />
+          <e p="AppDbContextModelSnapshot.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.1" t="Include">
@@ -25,14 +30,47 @@
         <e p="App.xaml.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="DesktopApp.csproj" t="IncludeRecursive" />
+        <e p="Helpers" t="Include">
+          <e p="ObservableObject.cs" t="Include" />
+          <e p="RelayCommand.cs" t="Include" />
+        </e>
         <e p="MainWindow.xaml" t="Include" />
         <e p="MainWindow.xaml.cs" t="Include" />
+        <e p="Models" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
               <e p="DesktopApp.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="Properties" t="Include">
+          <e p="PublishProfiles" t="Include">
+            <e p="FolderProfile.pubxml" t="Include" />
+          </e>
+        </e>
+        <e p="ViewModels" t="Include">
+          <e p="ApplicationViewModel.cs" t="Include" />
+          <e p="IPageViewModel.cs" t="Include" />
+          <e p="PlayerViewModel.cs" t="Include" />
+          <e p="SoundsViewModel.cs" t="Include" />
+          <e p="ThemeViewModel.cs" t="Include" />
+          <e p="TrackInThemeViewModel.cs" t="Include" />
+          <e p="TrackViewModel.cs" t="Include" />
+        </e>
+        <e p="Views" t="Include">
+          <e p="ApplicationView.xaml" t="Include" />
+          <e p="ApplicationView.xaml.cs" t="Include" />
+          <e p="PlayerView.xaml" t="Include" />
+          <e p="PlayerView.xaml.cs" t="Include" />
+          <e p="SoundsView.xaml" t="Include" />
+          <e p="SoundsView.xaml.cs" t="Include" />
+          <e p="ThemeView.xaml" t="Include" />
+          <e p="ThemeView.xaml.cs" t="Include" />
+          <e p="TrackInThemeView.xaml" t="Include" />
+          <e p="TrackInThemeView.xaml.cs" t="Include" />
+          <e p="TrackView.xaml" t="Include" />
+          <e p="TrackView.xaml.cs" t="Include" />
         </e>
       </e>
       <e p="Domain" t="IncludeRecursive">

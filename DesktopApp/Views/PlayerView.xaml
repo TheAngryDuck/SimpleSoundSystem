@@ -32,13 +32,16 @@
             
             <Button Command="MediaCommands.Stop" Content="Stop"/>
             <Separator/>
-            <Button Command="MediaCommands.DecreaseVolume" Content="-"/>
+            <Button Command="MediaCommands.DecreaseVolume" Content=" - "/>
+            <Separator/>
+            <Button Command="MediaCommands.IncreaseVolume" Content=" + "/>
+            <Separator/>
 
-            <Button Command="MediaCommands.IncreaseVolume" Content="+"/>
+            <CheckBox Background="Red" Name="loopBox" Content="Loop" IsChecked="{Binding CanLoop}" Checked="Check" Unchecked="Uncheck"/>
 
         </ToolBar>
 
-        <MediaElement Name="mePlayer" Grid.Row="1" LoadedBehavior="Manual" Stretch="None" Source="{Binding SelectedTrack.FilePath}" />
+        <MediaElement Name="mePlayer" Grid.Row="1" MediaEnded="Media_Ended" LoadedBehavior="Manual" Stretch="None" Source="{Binding SelectedTrack.FilePath}" />
 
         <StatusBar Grid.Row="2">
             <StatusBar.ItemsPanel>

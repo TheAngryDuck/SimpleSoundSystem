@@ -5,24 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DesktopApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="800" MaxHeight="400">
+             d:DesignHeight="450" d:DesignWidth="400"  Background="LightGreen">
     <Grid>
 
-        <Label VerticalAlignment="Top" Content="Name" HorizontalAlignment="Left" Margin="41,56,0,0"/>
-        <TextBox Width="178" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,57,0,0"
+        <Label VerticalAlignment="Top" Content="Name" HorizontalAlignment="Left" Margin="41,37,0,0"/>
+        <TextBox Width="178" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,39,0,0"
                  HorizontalContentAlignment="Center"
                  Name="AddThemeText"
-                 Text="{Binding TrackNameOuter}"
+                 Text="{Binding TrackNameOuter, UpdateSourceTrigger=PropertyChanged}"
                  VerticalContentAlignment="Center"/>
-        <Button Margin="289,54,451,0" Width="60" Height="30" Content="Add Path" VerticalAlignment="Top"
-                Command="{Binding Path=SaveTrackCommand}"/>
-        <Button Margin="289,126,451,0" Width="60" Height="30" Content="Delete" VerticalAlignment="Top"
-                Command="{Binding Path=DeleteTrackCommand}" />
-        <Label VerticalAlignment="Top" Content="Select from list to delete" HorizontalAlignment="Left" Margin="127,126,0,0"/>
-        <ListView Name="ThemeGrid"  Margin="10,184,390,64"  ItemsSource="{Binding Tracks}"  Width="400"
-                  SelectedItem="{Binding SelectedTrack}" SelectionMode="Single">
+        <Button Margin="289,39,0,0" Width="60" Height="30" Content="Add Path" VerticalAlignment="Top" HorizontalAlignment="Left"
+                Command="{Binding Path=SaveTrackCommand}" Background="GreenYellow"/>
+        <Button Margin="289,76,0,0" Width="60" Height="30" Content="Delete" VerticalAlignment="Top" HorizontalAlignment="Left"
+                Command="{Binding Path=DeleteTrackCommand}" Background="GreenYellow"/>
+        <Label VerticalAlignment="Top" Content="Select from list to delete" HorizontalAlignment="Left" Margin="127,74,0,0"/>
+        <ListView Name="ThemeGrid"  Margin="10,120,0,0"  ItemsSource="{Binding Tracks}"  Width="400" HorizontalAlignment="Left" VerticalAlignment="Top"
+                  SelectedItem="{Binding SelectedTrack}" SelectionMode="Single" Background="GreenYellow" BorderThickness="1">
             <ListView.View>
-                <GridView x:Name="grdTest">
+                <GridView x:Name="grdTest" >
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
                     <GridViewColumn Header="Path" DisplayMemberBinding="{Binding FilePath}"  Width="300"/>
                 </GridView>

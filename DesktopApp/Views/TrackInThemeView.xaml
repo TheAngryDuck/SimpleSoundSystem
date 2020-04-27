@@ -5,33 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DesktopApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="400" Background="LightGreen">
     <Grid>
 
         <ComboBox HorizontalAlignment="Left"   
-                  Margin="135,39,0,0"   
+                  Margin="250,39,0,0"   
                   VerticalAlignment="Top"   
                   Width="120"   
                   ItemsSource="{Binding Path=Themes}"    
                   SelectedItem="{Binding Path=SelectedTheme}"  
                   DisplayMemberPath="Name"/>
-        <ComboBox HorizontalAlignment="Right"   
-                  Margin="0,39,328,0"   
+        <ComboBox HorizontalAlignment="Left"   
+                  Margin="50,39,0,0"   
                   VerticalAlignment="Top"   
                   Width="120"   
                   ItemsSource="{Binding Path=Tracks}"    
                   SelectedItem="{Binding Path=SelectedTrack}"  
                   DisplayMemberPath="Name"/>
-        <Label VerticalAlignment="Top" Content="Theme" HorizontalAlignment="Left" Margin="57,37,0,0"/>
-        <Label VerticalAlignment="Top" Content="Track" HorizontalAlignment="Right" Margin="0,37,469,0"/>
-        <Button Margin="520,35,220,0" Width="60" Height="30" Content="Add" VerticalAlignment="Top"
-                Command="{Binding Path=SaveTrackInThemeCommand}"/>
-        <Button Margin="599,35,141,0" Width="60" Height="30" Content="Delete" VerticalAlignment="Top"
-                Command="{Binding Path=DeleteTrackInThemeCommand}" />
-        <Button Margin="677,35,63,0" Width="60" Height="30" Content="Refresh" VerticalAlignment="Top"
-                Command="{Binding Path=RefreshCommand}" />
-        <ListView Name="ThemeGrid"  Margin="149,103,251,145"  ItemsSource="{Binding TracksInThemes}"  Width="400"
-                  SelectedItem="{Binding SelectedTrackInTheme}" SelectionMode="Single">
+        <Label VerticalAlignment="Top" Content="Theme" HorizontalAlignment="Left" Margin="200,37,0,0"/>
+        <Label VerticalAlignment="Top" Content="Track" HorizontalAlignment="left" Margin="0,37,0,0"/>
+        <Button Margin="5,75,0,0" Width="60" Height="30" Content="Add" VerticalAlignment="Top"
+                Command="{Binding Path=SaveTrackInThemeCommand}" HorizontalAlignment="Left" Background="GreenYellow"/>
+        <Button Margin="180,75,0,0" Width="60" Height="30" Content="Delete" VerticalAlignment="Top"
+                Command="{Binding Path=DeleteTrackInThemeCommand}" HorizontalAlignment="Left" Background="GreenYellow"/>
+        <Button Margin="345,75,0,0" Width="60" Height="30" Content="Refresh" VerticalAlignment="Top"
+                Command="{Binding Path=RefreshCommand}" HorizontalAlignment="Left" Background="GreenYellow"/>
+        <ListView Name="ThemeGrid"  Margin="5,118,0,0"  ItemsSource="{Binding TracksInThemes}"  Width="400"
+                  SelectedItem="{Binding SelectedTrackInTheme}" SelectionMode="Single" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <ListView.View>
                 <GridView x:Name="grdTest">
                     <GridViewColumn Header="Track" DisplayMemberBinding="{Binding Track.Name}"  Width="200"/>

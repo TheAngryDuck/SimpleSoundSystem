@@ -22,5 +22,6 @@ namespace DesktopApp.Views
         {
             InitializeComponent();
         }
+
     }
 }

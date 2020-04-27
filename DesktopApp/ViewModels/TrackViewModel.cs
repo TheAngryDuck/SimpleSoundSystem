@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
-using DAL;
 using DesktopApp.Helpers;
-using Domain;
+using DesktopApp.Models;
 using Microsoft.Win32;
 
 namespace DesktopApp.ViewModels
@@ -81,7 +80,7 @@ namespace DesktopApp.ViewModels
                 {
                     _deleteTrackCommand = new RelayCommand(
                         param => Delete_track(SelectedTrack),
-                        param => (_deleteTrackCommand != null)
+                        param => (SelectedTrack != null)
                     );
                 }
                 return _deleteTrackCommand;
